@@ -8,6 +8,12 @@ describe DockingStation do
       # we want to release the bike we docked
       expect{subject.release_bike}.to raise_error 'No bikes available'
     end
+
+    it 'only returns non-broken bikes' do
+      subject.dock(Bike.new)
+      subject.dock(Bike.new, true)
+      expect(subject.release_bike).to include(:broken => false)
+    end
   end
 
   describe "#dock(bike)" do

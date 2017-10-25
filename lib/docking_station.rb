@@ -11,7 +11,11 @@ class DockingStation
 
   def release_bike
     fail 'No bikes available' if empty?
-    @bikes.pop
+    
+    chosen = @bikes.select{|x| x[:broken] == false}.pop
+    @bikes.delete(chosen)
+    chosen
+
   end
 
   def dock(bike, broken=false)
