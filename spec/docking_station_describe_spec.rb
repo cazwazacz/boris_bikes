@@ -7,8 +7,12 @@ describe DockingStation do
   bike = station.release_bike
 
   it "releases bike and is working" do
-    expect(station).to respond_to (:release_bike)
+    expect(station).to respond_to(:release_bike)
     expect(bike.working?).to eq true
-
   end
+
+  it "docks the bike" do
+    expect(station).to respond_to(:dock).with(1).argument
+  end
+
 end
