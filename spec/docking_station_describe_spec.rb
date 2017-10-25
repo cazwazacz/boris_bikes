@@ -3,15 +3,12 @@ require 'bike'
 
 describe DockingStation do
 
-ds =   DockingStation.new
-bike = Bike.new
+  station =   DockingStation.new
+  bike = station.release_bike
 
-  it "releases bike" do
-    expect(ds).to respond_to (:release_bike)
+  it "releases bike and is working" do
+    expect(station).to respond_to (:release_bike)
+    expect(bike.working?).to eq true
+
   end
-
-  it "works" do
-    expect(ds.release_bike).to eq (bike.working? == true)
-  end
-
 end
