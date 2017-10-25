@@ -3,22 +3,17 @@ require 'bike'
 
 describe DockingStation do
 
-  # station =   DockingStation.new
-  # bike = station.release_bike
-  #
-  # it "releases bike and is working" do
-  #   expect(station).to respond_to(:release_bike)
-  #   expect(bike.working?).to eq true
-  # end
-  #
-  # it "docks the bike" do
-  #   expect(station).to respond_to(:dock).with(1).argument
-  # end
-
   describe '#release_bike' do
     it 'raises an error when there are no bikes available' do
       # we want to release the bike we docked
       expect{subject.release_bike}.to raise_error 'No bikes available'
+    end
+  end
+
+  describe "#dock(bike)" do
+    it "raises error when the station can no accept bikes" do
+
+      expect{2.times {subject.dock(Bike.new)}}.to raise_error "the docking station is full"
     end
   end
 

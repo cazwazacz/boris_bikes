@@ -1,6 +1,10 @@
 
 class DockingStation
-  attr_reader :bike
+  attr_reader :bike, :count
+
+  def initialize
+    @count = 0
+  end
 
   def release_bike
     fail 'No bikes available' unless @bike
@@ -8,7 +12,12 @@ class DockingStation
   end
 
   def dock(bike)
-    @bike = bike
+    if @count == 0
+      @bike = bike
+      @count += 1
+    else
+      fail 'the docking station is full'
+    end
   end
 
 end
