@@ -15,6 +15,11 @@ describe DockingStation do
 
       expect{21.times {subject.dock(Bike.new)}}.to raise_error "The docking station is full"
     end
+
+    it "user passing bike as broken" do
+      expect(subject).to respond_to(:dock).with(2).arguments
+    end
+
   end
 
 end
