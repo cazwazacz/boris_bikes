@@ -13,7 +13,7 @@ describe DockingStation do
   describe "#dock(bike)" do
     it "raises error when the station can no accept bikes" do
 
-      expect{2.times {subject.dock(Bike.new)}}.to raise_error "the docking station is full"
+      expect{21.times {subject.dock(Bike.new)}}.to raise_error "The docking station is full"
     end
   end
 
