@@ -15,4 +15,8 @@ describe DockingStation do
     expect(station).to respond_to(:dock).with(1).argument
   end
 
+  it "raises" do
+    expect {station.release_bike}.to raise_error
+  end
+
 end

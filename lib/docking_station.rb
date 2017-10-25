@@ -3,7 +3,8 @@ class DockingStation
   attr_reader :bike
 
   def release_bike
-    Bike.new
+    # Bike.new
+    raise Exception
   end
 
   def dock(bike)
