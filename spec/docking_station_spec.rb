@@ -8,21 +8,13 @@ describe DockingStation do
       expect{subject.release_bike}.to raise_error 'No bikes available'
     end
 
-    it 'only returns non-broken bikes' do
-      subject.dock(Bike.new)
-      broken_bike = Bike.new
-      broken_bike.working = false
-      subject.dock(broken_bike)
-      expect(subject.release_bike.working).to eq(true)
+    it 'release working bikes' do
+      bike = double("bike", :working? => true)
+      allow(bike).to receive(:working?).and_return(true)
+      subject.dock(bike)
+      released_bike = subject.release_bike
+      expect(released_bike).to be_working
     end
-
-    it 'all bikes are broken when user tries to release one' do
-      broken_bike = Bike.new
-      broken_bike.working = false
-      subject.dock(broken_bike)
-      expect{subject.release_bike}.to raise_error "All bikes are currently out of order"
-    end
-
   end
 
   describe "#dock(bike)" do
