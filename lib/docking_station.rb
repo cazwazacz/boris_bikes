@@ -24,10 +24,14 @@ class DockingStation
     @bikes << bike
   end
 
+  def dock_repaired_bikes(repaired_bikes)
+    @bikes.concat(repaired_bikes)
+  end
+
   def remove_broken_bikes
-    @broken_bikes = @bikes.select{|x| x.working? == false}
+    broken_bikes = @bikes.select{|x| x.working? == false}
     @bikes = @bikes.reject{|x| x.working? == false}
-    @broken_bikes
+    broken_bikes
   end
 
   private
