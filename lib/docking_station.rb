@@ -24,6 +24,12 @@ class DockingStation
     @bikes << bike
   end
 
+  def remove_broken_bikes
+    @broken_bikes = @bikes.select{|x| x.working? == false}
+    @bikes = @bikes.reject{|x| x.working? == false}
+    @broken_bikes
+  end
+
   private
 
   def full?

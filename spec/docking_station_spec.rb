@@ -25,4 +25,15 @@ describe DockingStation do
 
   end
 
+  describe '#broken_bikes' do
+    it 'sorts broken bikes, takes them out of the array and returns them' do
+      bikes = []
+      5.times {bikes << double("bike", :working? => false)}
+      5.times {bikes << double("bike", :working? => true)}
+      bikes.shuffle
+      bikes.each{|bike| subject.dock(bike)}
+      expect(subject.remove_broken_bikes.length).to eq 5
+    end
+  end
+
 end
